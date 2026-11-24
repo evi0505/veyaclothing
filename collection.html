@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collection Autumn/Winter 2026-2027 | VEYA</title>
+<link rel="stylesheet" href="CSS/collection.css?v=3" type="text/css">
+</head>
+<body>
+
+  <header class="collection-header">
+    <div class="header-left">
+      <a href="index.html" class="back-arrow" title="Zurück zur Startseite">←</a>
+      <h1>Collection<br>Autumn/Winter 2026-2027</h1>
+    </div>
+
+    <a href="index.html" class="header-logo">
+      <img src="bilder/logo.png" alt="VEYA">
+    </a>
+  </header>
+
+  <main class="lookbook-container">
+    <section class="lookbook-grid">
+      <article class="look-card" onclick="openLightbox('bilder/img1.png', 'LOOK 01')">
+        <div class="look-image">
+          <img src="bilder/img1.png" alt="Look 01">
+        </div>
+        <span class="look-number">LOOK 01</span>
+      </article>
+
+      <article class="look-card" onclick="openLightbox('bilder/img2.png', 'LOOK 02')">
+        <div class="look-image">
+          <img src="bilder/img2.png" alt="Look 02">
+        </div>
+        <span class="look-number">LOOK 02</span>
+      </article>
+
+      <article class="look-card" onclick="openLightbox('bilder/img3.png', 'LOOK 03')">
+        <div class="look-image">
+          <img src="bilder/img3.png" alt="Look 03">
+        </div>
+        <span class="look-number">LOOK 03</span>
+      </article>
+      <article class="look-card" onclick="openLightbox('bilder/img4.jpg', 'LOOK 04')">
+        <div class="look-image">
+          <img src="bilder/img4.jpg" alt="Look 04">
+        </div>
+        <span class="look-number">LOOK 04</span>
+      </article>
+
+      <article class="look-card" onclick="openLightbox('bilder/img5.png', 'LOOK 05')">
+        <div class="look-image">
+          <img src="bilder/img5.png" alt="Look 05">
+        </div>
+        <span class="look-number">LOOK 05</span>
+      </article>
+
+      <article class="look-card" onclick="openLightbox('bilder/img6.png', 'LOOK 06')">
+        <div class="look-image">
+          <img src="bilder/img6.png" alt="Look 06">
+        </div>
+        <span class="look-number">LOOK 06</span>
+      </article>
+    </section>
+  </main>
+
+  <footer class="collection-footer">
+    <a href="runaway.html" class="next-collection-link">Runaway Spring/Summer 2027</a>
+  </footer>
+
+
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <button type="button" class="lightbox-close">✕</button>
+    <img id="lightbox-img" src="" alt="Look Preview">
+    <p id="lightbox-caption"></p>
+  </div>
+
+  <script>
+    function openLightbox(src, caption) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption;
+      document.getElementById('lightbox').classList.add('open');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+  </script>
+
+</body>
+</html>

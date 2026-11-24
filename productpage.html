@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product | VEYA</title>
+  <link rel="stylesheet" href="CSS/productpage.css" type="text/css">
+</head>
+<body>
+
+  <header class="top-bar">
+    <a href="product.html" class="back-arrow" title="Zurück zur Startseite">←</a>
+
+    <a href="index.html" class="header-logo" title="Zurück zur Startseite">
+      <img src="bilder/logo.png" alt="VEYA">
+    </a>
+
+    <div class="header-right-group">
+	<select id="currency-select" class="header-select">
+        <option value="EUR">€ EUR</option>
+        <option value="USD">$ USD</option>
+        <option value="GBP">£ GBP</option>
+      </select>
+      <a href="cart.html" class="header-icon" title="Shopping cart">
+        <img src="bilder/cart.png" alt="Shopping cart">
+        <span id="cart-dot" class="cart-dot"></span>
+      </a>
+
+      <a href="#" class="header-icon" title="Profile">
+        <img src="bilder/profile.png" alt="Profile">
+      </a>
+    </div>
+  </header>
+
+  <main class="product-detail-page">
+    <div class="product-detail-grid">
+      <div id="minifoto" class="minifoto"></div>
+    <div class="product-photo-box"> 
+      <img id="detail-img" src="bilder/model1.png" alt="Product">
+    </div>
+	
+  
+      <div class="product-info-box">
+        <div class="product-header-row">
+          <h1 id="detail-title" class="product-title">NAME</h1>
+          <span id="detail-price" class="product-price">0€</span>
+        </div>
+
+        <p id="detail-desc" class="product-details">Product details</p>
+
+        <ul class="product-specs">
+          <li id="detail-material">Material</li>
+          <li id="detail-color">Color</li>
+          <li id="detail-country">Country</li>
+        </ul>
+
+        <div class="size-block">
+          <label for="size-select">Size</label>
+          <select id="size-select" class="size-select">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+          </select>
+        </div>
+
+        <button type="button" class="add-to-cart-btn" onclick="addToCart()">ADD TO CART</button>
+        <p id="cart-feedback" style="margin-top: 12px; font-size: 12px; font-weight: 700; color: #2e6f40;"></p>
+        <p class="shipping-note">Free shipping on orders over 100€</p>
+      </div>
+
+    </div>
+
+   
+    <section class="related-section">
+      <h2 class="related-title">YOU MAY ALSO LIKE</h2>
+      <div class="slider-box">
+        <div id="related-track" class="slider-track"></div>
+      </div>
+    </section>
+  </main>
+
+
+
+
+
+  <script>
+  
+    const catalog = {
+      "model1": {
+        title: "Gorgette Dress",
+        desc: "Georgette Hoodie Dress With Macro Pockets And Pleated Skirt",
+        price: 420,
+        material: "Material: 100% PL",
+        color: "Color: Lime",
+        country: "Country: Made in Italy",
+        img: "bilder/model1.png",
+        photos: ["bilder/model1.png", "bilder/greendress1.png"]
+      },
+      "model2": {
+        title: "Half Moon Tulle Structure Ball Gown",
+        desc: "Asymmetrical Half Moon Tulle Structure On A Corset With Long Georgette Skirt",
+        price: 890,
+        material: "Material: 100% PA; 100% PL",
+        color: "Color: Orange",
+        country: "Country: Made in Italy",
+        img: "bilder/model2.png",
+        photos: ["bilder/model2.png", "bilder/orangedress1.jpg", "bilder/orangedress2.jpg"]
+      },
+      "model3": {
+        title: "One Shoulder Tulle Trench Dress",
+        desc: "Mid-Length One Shoulder Tulle Trench Dress",
+        price: 945,
+        material: "Material: 100% PA",
+        color: "Color: Pink",
+        country: "Country: Made In Italy",
+        img: "bilder/model3.png",
+        photos: ["bilder/model3.png", "bilder/pinktrench1.png", "bilder/pinktrench.jpg"]
+      },
+      "model4": {
+        title: "One Shoulder Cotton Trench Dress",
+        desc: "Draped Mid Length Trench Coat Dress",
+        price: 610,
+        material: "100% CO",
+        color: "Color:  Camel",
+        country: "Country: Made in Germany",
+        img: "bilder/model4.png",
+        photos: ["bilder/model4.png", "bilder/trench1.png"]
+      },
+      "11": {
+        title: "Asymmetric Tulle Structure Corset",
+        desc: "Asymmetric Tulle Structure Corset",
+        price: 6500,
+        material: "Material: 100% PA; 100% PL",
+        color: "Color: White",
+        country: "Country: Made In Italy",
+        img: "bilder/11.png",
+        photos: ["bilder/11.png", "bilder/corsetimg1.jpg", "bilder/corsetimg2.jpg"]
+      },
+      "22": {
+        title: "Blazer With Tulle Ruffles",
+        desc: "Tulle Ruffles On The Left Of A Wool Blazer",
+        price: 945,
+        material: "Material: 100% WO; Tulle: 100% PA",
+        color: "Color: Cream",
+        country: "Country: Made in Italy",
+        img: "bilder/22.png",
+        photos: ["bilder/22.png", "bilder/whitecostume1.png", "bilder/whitecostume2.png"]
+      },
+      "33": {
+        title: "Bodice Patch Jacket",
+        desc: "Virgin Wool Jacket With Bodice Patch",
+        price: 970,
+        material: "Material:  100% WV, Tulle: 100% PA | Lining: 100% Viscose",
+        color: "Color: Black/Canary",
+        country: "Country: Made in Italy",
+        img: "bilder/33.png",
+        photos: ["bilder/33.png", "bilder/blackcostume1.jpg", "bilder/blackcostume2.jpg"]
+      },
+      "44": {
+        title: "Cropped Denim Jacket",
+        desc: "Cropped Denim Jacket With Circular Cuts And Patch Pockets",
+        price: 486,
+        material: "Material: 96% Co, 4% Ea",
+        color: "Color: Classic Blue",
+        country: "Country: Made in Italy",
+        img: "bilder/44.png",
+        photos: ["bilder/44.png", "bilder/jeanscostume2.jpg"]
+      },
+      "pinkcostumemodel": {
+        title: "Oversized Jacket With Eyelets",
+        price: 1107,
+        material: "Material: 95% WO 5% LY; Lining: 100% Pl",
+        color: "Color: Baby Pink",
+        country: "Country: Made in Italy",
+        img: "bilder/pinkcostumemodel.png",
+        photos: ["bilder/pinkcostumemodel.png"]
+      }
+    };
+
+
+
+
+
+
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const modelId = urlParams.get('id') || 'model3';
+    const currentProduct = catalog[modelId] || catalog['model3'];
+
+    document.title = currentProduct.title + " | VEYA";
+    const detailImg = document.getElementById('detail-img');
+    detailImg.src = currentProduct.img;
+    document.getElementById('detail-title').textContent = currentProduct.title;
+    document.getElementById('detail-price').textContent = currentProduct.price + "€";
+    document.getElementById('detail-desc').textContent = currentProduct.desc;
+    document.getElementById('detail-material').textContent = currentProduct.material;
+    document.getElementById('detail-color').textContent = currentProduct.color;
+    document.getElementById('detail-country').textContent = currentProduct.country;
+
+    
+    const miniFotoBox = document.getElementById('minifoto');
+    const photoList = currentProduct.photos || [currentProduct.img];
+
+    if (miniFotoBox) {
+      photoList.forEach((src, index) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = index === 0 ? 'thumb-item active' : 'thumb-item';
+        btn.innerHTML = `<img src="${src}" alt="View ${index + 1}">`;
+
+        btn.onclick = () => {
+          detailImg.src = src;
+          document.querySelectorAll('.thumb-item').forEach(el => el.classList.remove('active'));
+          btn.classList.add('active');
+        };
+
+        miniFotoBox.appendChild(btn);
+      });
+    }
+
+   
+    const track = document.getElementById('related-track');
+    const otherKeys = Object.keys(catalog).filter(key => key !== modelId);
+
+    if (track) {
+      [...otherKeys, ...otherKeys].forEach(key => {
+        const item = catalog[key];
+        const card = document.createElement('a');
+        card.href = `?id=${key}`;
+        card.className = 'related-card';
+        card.innerHTML = `
+          <div class="related-img">
+            <img src="${item.img}" alt="${item.title}">
+          </div>
+          <div class="related-info">
+            <span>${item.title}</span>
+            <span>${item.price}€</span>
+          </div>
+        `;
+        track.appendChild(card);
+      });
+    }
+
+    
+    function updateCartDot() {
+      const cart = JSON.parse(localStorage.getItem('veya_cart')) || [];
+      const dot = document.getElementById('cart-dot');
+      if (dot) {
+        dot.classList.toggle('active', cart.length > 0);
+      }
+    }
+
+    function addToCart() {
+      const sizeSelect = document.getElementById('size-select');
+      const selectedSize = sizeSelect ? sizeSelect.value : 'S';
+
+      let cart = JSON.parse(localStorage.getItem('veya_cart')) || [];
+
+      const existingIndex = cart.findIndex(
+        item => item.name === currentProduct.title && item.size === selectedSize
+      );
+
+      if (existingIndex !== -1) {
+        cart[existingIndex].qty = (cart[existingIndex].qty || 1) + 1;
+      } else {
+        cart.push({
+          name: currentProduct.title,
+          size: selectedSize,
+          price: currentProduct.price,
+          qty: 1,
+          img: currentProduct.img
+        });
+      }
+
+      localStorage.setItem('veya_cart', JSON.stringify(cart));
+      updateCartDot();
+
+      const feedback = document.getElementById('cart-feedback');
+      if (feedback) {
+        feedback.textContent = 'ADDED TO CART ✓';
+        setTimeout(() => {
+          feedback.textContent = '';
+        }, 2500);
+      }
+    }
+
+    updateCartDot();
+	const exchangeRates = {
+    EUR: { rate: 1, symbol: '€' },
+    USD: { rate: 1.08, symbol: '$' },
+    GBP: { rate: 0.85, symbol: '£' }
+  };
+
+  const currencySelect = document.getElementById('currency-select');
+  const priceElement = document.getElementById('detail-price');
+
+ 
+  function updateProductPrice(currency) {
+    
+    if (!priceElement.dataset.basePrice) {
+      const numericPrice = parseFloat(priceElement.textContent.replace(/[^\d.]/g, ''));
+      if (!isNaN(numericPrice)) {
+        priceElement.dataset.basePrice = numericPrice;
+      }
+    }
+
+    const basePrice = parseFloat(priceElement.dataset.basePrice);
+    if (!isNaN(basePrice) && exchangeRates[currency]) {
+      const converted = Math.round(basePrice * exchangeRates[currency].rate);
+      priceElement.textContent = `${converted}${exchangeRates[currency].symbol}`;
+    }
+  }
+
+
+  currencySelect.addEventListener('change', function() {
+    localStorage.setItem('currency', this.value);
+    updateProductPrice(this.value);
+  });
+
+  
+  window.addEventListener('DOMContentLoaded', function() {
+    const savedCurrency = localStorage.getItem('currency') || 'EUR';
+    currencySelect.value = savedCurrency;
+    updateProductPrice(savedCurrency);
+  });
+  </script>
+
+</body>
+</html>

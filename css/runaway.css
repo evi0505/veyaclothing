@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #ffffff;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+
+.runaway-header {
+  width: 100%;
+  padding: 32px 5% 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 10;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.back-arrow {
+  display: inline-block;
+  text-decoration: none;
+  color: #000000;
+  font-size: 26px;
+  line-height: 1;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.back-arrow:hover {
+  color: #777777;
+  transform: translateX(-3px);
+}
+
+.runaway-header h1 {
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.header-logo img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
+
+.carousel-stage {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1600px;
+  overflow: visible;
+  padding-bottom: 20px;
+}
+
+
+.carousel-3d {
+  --radius: 440px;
+  position: relative;
+  width: 260px;
+  height: 440px;
+  transform-style: preserve-3d;
+  animation: spinCircle 24s linear infinite;
+}
+
+
+.carousel-stage:hover .carousel-3d {
+  animation-play-state: paused;
+}
+
+.carousel-item {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(calc(var(--i) * (360deg / var(--total)))) translateZ(var(--radius));
+  transition: transform 0.3s ease;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+}
+
+@keyframes spinCircle {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(0deg) rotateY(-360deg);
+  }
+}
+
+
+.runaway-footer {
+  width: 100%;
+  padding: 20px 5% 36px;
+  position: relative;
+  z-index: 10;
+}
+
+.next-collection-link {
+  text-decoration: none;
+  color: #000000;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.next-collection-link:hover {
+  color: #777777;
+}
+
+
+@media (max-width: 768px) {
+  .runaway-header h1 {
+    font-size: 28px;
+  }
+
+  .header-logo img {
+    height: 26px;
+  }
+
+  .carousel-stage {
+    height: 320px;
+    perspective: 950px;
+  }
+
+  .carousel-3d {
+    --radius: 230px;
+    width: 130px;
+    height: 215px;
+  }
+}

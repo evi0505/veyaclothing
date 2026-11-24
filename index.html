@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="de">
+	<head>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Veya</title>
+	<link rel="stylesheet" href="CSS/full.css?v=2" type="text/css">
+	 <link rel = "icon" type="image/png" href= "bilder/logo.png">
+	</head>
+	
+	<body>
+	<nav id="side-menu" class="side-menu">
+  <button type="button" id="close-menu-btn" class="close-menu-btn">✕</button>
+  <a href="product.html">Products</a>
+</nav>
+<div id="menu-overlay" class="menu-overlay"></div>
+    <div id = startbox>
+	<header> 
+	
+    <div id = "header-left">
+	<button class="menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+			</div>
+			
+<div class="logo">
+ <img src="bilder/logo.png" alt="VEYA" class="logo-img">
+ <a href="main.html" class="logo" title="Zurück zur Startseite">
+	 <img src="bilder/logo.png" alt="VEYA">
+  </a>
+</div>
+   	<div id="header-right">
+
+    <select id="currency-select" class="header-select">
+        <option value="EUR">€ EUR</option>
+        <option value="USD">$ USD</option>
+        <option value="GBP">£ GBP</option>
+    </select>
+
+    <select id="language-select" class="header-select">
+        <option value="EN">EN</option>
+        <option value="DE">DE</option>
+        <option value="RU">RU</option>
+    </select>
+<a href="cart.html" class="header-icon" style="position: relative; display: inline-block;" title="Shopping cart">
+<span id="cart-dot" class="cart-dot"></span>
+    <img src="bilder/cart.png" alt="Shopping cart">
+</a>
+
+<a href="#" class="header-icon">
+    <img src="bilder/profile.png" alt="Profile">
+</a>
+</div>
+    </header>
+
+        
+		 <div class="sub-nav">
+           <div class="sub-nav-item" onclick="window.location.href='runaway.html'">Runaway Spring/Summer 2027</div>
+           <div class="sub-nav-item" onclick="window.location.href='collection.html'">Collection Autumn/Winter 2026-2027</div>
+        </div>
+			
+			
+ <main class="main-content">
+    <div class="startbox2">
+      
+        <button class="slider-arrow prev-arrow">&#10094;</button>
+        
+        
+        <div class="models-grid">
+            <div class="modelcard">
+                <img src="bilder/model1.png" alt="Model 1">
+            </div>
+            <div class="modelcard">
+                <img src="bilder/model2.png" alt="Model 2">
+            </div>
+            <div class="modelcard">
+                <img src="bilder/model3.png" alt="Model 3">
+            </div>
+            <div class="modelcard">
+                <img src="bilder/model4.png" alt="Model 4">
+            </div>
+        </div>
+
+       
+        <button class="slider-arrow next-arrow">&#10095;</button>
+
+     
+        <div class="featured-box">
+            <img src="bilder/pinkcostumemodel.png" alt="Featured Model">
+        </div>
+
+        
+        <div class="low-box">
+            <div class="low-text">
+                <a href="impressum.html">Impressum</a>
+                <a href="mailto:info@veyastudio.com">info@veyastudio.com</a>
+            </div>
+        </div>
+		
+		
+	<div class="low-socials">
+
+    <a href="https://www.instagram.com/"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="social-img-link">
+        <img src="bilder/insta.png" alt="Instagram">
+    </a>
+
+    <a href="https://www.facebook.com/"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="social-img-link">
+        <img src="bilder/facebook.png" alt="Facebook">
+    </a>
+
+</div>
+
+</div>		
+   
+</main>     
+	</div>
+
+  <script>
+   
+    document.querySelectorAll('.modelcard img, .featured-box img').forEach(img => {
+      img.style.cursor = 'pointer';
+      
+      img.addEventListener('click', function() {
+        const src = this.getAttribute('src');
+        
+        const fileName = src.replace('bilder/', '').replace('.png', '').replace('.jpg', '');
+        window.location.href = 'productpage.html?id=' + fileName;
+      });
+    });
+
+
+    const currencySelect = document.getElementById('currency-select');
+    const languageSelect = document.getElementById('language-select');
+
+    currencySelect.addEventListener('change', function() {
+      localStorage.setItem('currency', this.value);
+    });
+
+    languageSelect.addEventListener('change', function() {
+      localStorage.setItem('language', this.value);
+    });
+
+    window.addEventListener('DOMContentLoaded', function() {
+      const savedCurrency = localStorage.getItem('currency');
+      const savedLanguage = localStorage.getItem('language');
+      if (savedCurrency) currencySelect.value = savedCurrency;
+      if (savedLanguage) languageSelect.value = savedLanguage;
+    });
+
+    
+    const modelImages = [
+      [
+        "bilder/model1.png",
+        "bilder/model2.png",
+        "bilder/model3.png",
+        "bilder/model4.png"
+      ],
+      [
+        "bilder/11.png",
+        "bilder/22.png",
+        "bilder/33.png",
+        "bilder/44.png"
+      ]
+    ];
+
+    let currentSet = 0;
+    const cards = document.querySelectorAll('.modelcard img');
+
+    function changeModels(direction) {
+      currentSet = (currentSet + direction + modelImages.length) % modelImages.length;
+      cards.forEach((img, index) => {
+        img.src = modelImages[currentSet][index];
+      });
+    }
+
+    document.querySelector('.next-arrow').addEventListener('click', () => changeModels(1));
+    document.querySelector('.prev-arrow').addEventListener('click', () => changeModels(-1));
+
+    
+    const menuBtn = document.querySelector('.menu-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
+    const sideMenu = document.getElementById('side-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+
+    menuBtn.addEventListener('click', () => {
+      sideMenu.classList.add('open');
+      menuOverlay.classList.add('open');
+    });
+
+    function closeMenu() {
+      sideMenu.classList.remove('open');
+      menuOverlay.classList.remove('open');
+    }
+
+    closeMenuBtn.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+
+
+    function updateCartDot() {
+      const cart = JSON.parse(localStorage.getItem('veya_cart')) || [];
+      const dot = document.getElementById('cart-dot');
+      if (dot) {
+        dot.classList.toggle('active', cart.length > 0);
+      }
+    }
+
+    updateCartDot();
+    window.addEventListener('pageshow', updateCartDot);
+  </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ | VEYA</title>
+  <link rel="stylesheet" href="CSS/faq.css" type="text/css">
+</head>
+<body>
+
+  <header class="top-bar">
+    <a href="impressum.html" class="back-arrow" title="Zurück">←</a>
+  </header>
+
+  <main class="faq-container">
+    <h1>FAQ</h1>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button type="button" class="faq-pill" onclick="toggleFaq(this)">
+          Worldwide shipping
+        </button>
+        <div class="faq-answer">
+          We offer worldwide shipping with DHL Express and UPS. Orders within Germany take 1–3 business days, while international deliveries take 3–7 business days. Free shipping is available on all orders over 100€.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-pill" onclick="toggleFaq(this)">
+          Payment
+        </button>
+        <div class="faq-answer">
+          We accept Visa, Mastercard, American Express, PayPal, Apple Pay, Google Pay, and Klarna. All payments are processed securely with SSL encryption.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-pill" onclick="toggleFaq(this)">
+          Return policy
+        </button>
+        <div class="faq-answer">
+          You can return unworn items with original tags attached within 14 days of delivery. Contact info@veyastudio.com with your order number to receive your return label.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-pill" onclick="toggleFaq(this)">
+          Cancelation
+        </button>
+        <div class="faq-answer">
+          Orders can be canceled within 2 hours after placement before dispatch. Please reach out to info@veyastudio.com immediately if you wish to modify or cancel your order.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="faq-footer">
+  <a href="main.html" class="footer-logo">
+    <img src="bilder/logo2.png" alt="VEYA">
+  </a>
+</footer>
+
+  <script>
+    function toggleFaq(button) {
+      const item = button.parentElement;
+      item.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
