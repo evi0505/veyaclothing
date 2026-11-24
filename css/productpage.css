@@ -16,7 +16,7 @@ body {
 
 .top-bar {
   width: 100%;
-  padding: 32px 8%;
+  padding: 32px 2.5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -473,4 +473,94 @@ body {
 .header-select option {
   background: white;
   color: black;
+}
+
+
+.related-card img {
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+  display: block;
+}
+
+.related-name {
+  font-size: 12px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.related-price {
+  font-size: 12px;
+  color: #555;
+}
+
+
+.product-photo-box img {
+  cursor: zoom-in;
+}
+
+.photo-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.94);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 40px;
+}
+
+.photo-modal.open {
+  display: flex;
+}
+
+.photo-modal img {
+  max-width: 90%;
+  max-height: 88vh;
+  object-fit: contain;
+  display: block;
+}
+
+.close-modal-btn {
+  position: fixed;
+  top: 32px;
+  right: 45px;
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  font-weight: 300;
+  color: #000000;
+  cursor: pointer;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+}
+
+.close-modal-btn:hover {
+  opacity: 0.5;
+}
+.modal-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: #000000;
+  cursor: pointer;
+  padding: 15px 25px;
+  z-index: 10000;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+.modal-arrow:hover {
+  opacity: 0.5;
+}
+
+.modal-prev {
+  left: 30px;
+}
+
+.modal-next {
+  right: 30px;
 }
