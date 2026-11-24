@@ -370,9 +370,10 @@ body {
 .related-img {
   width: 100%;
   height: 310px;
-
   margin-bottom: 10px;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .related-img img {
@@ -427,7 +428,7 @@ body {
     order: 3;
     width: 100%;
     max-width: 360px;
-  }
+  
 }
 .header-right-group {
   background: transparent;
@@ -503,7 +504,7 @@ body {
   position: fixed;
   inset: 0;
   background: rgba(255, 255, 255, 0.94);
-  display: flex;
+ display: none;
   justify-content: center;
   align-items: center;
   z-index: 9999;
@@ -532,6 +533,7 @@ body {
   color: #000000;
   cursor: pointer;
   line-height: 1;
+  z-index: 10002;
   transition: opacity 0.2s ease;
 }
 
